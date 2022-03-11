@@ -6,7 +6,7 @@ USE `provas` ;
 -- Table `mydb`.`aplicante`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `provas`.`aplicante` (
-  `idaplicante` INT NOT NULL,
+  `idaplicante` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`idaplicante`))
 ENGINE = InnoDB;
@@ -16,7 +16,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`prova`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `provas`.`prova` (
-  `idprova` INT NOT NULL,
+  `idprova` INT NOT NULL AUTO_INCREMENT, 
   `aplicante_idaplicante` INT NOT NULL,
   PRIMARY KEY (`idprova`),
   INDEX `fk_prova_aplicante1_idx` (`aplicante_idaplicante` ASC) VISIBLE,
@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`perguntas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `provas`.`perguntas` (
-  `idperguntas` INT NOT NULL,
+  `idperguntas` INT NOT NULL AUTO_INCREMENT,
   `pergunta` VARCHAR(255) NOT NULL,
   `dificuldade` INT NOT NULL,
   `respostas` JSON NULL,
