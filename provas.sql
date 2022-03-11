@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `provas`.`prova` (
   INDEX `fk_prova_aplicante1_idx` (`aplicante_idaplicante` ASC) VISIBLE,
   CONSTRAINT `fk_prova_aplicante1`
     FOREIGN KEY (`aplicante_idaplicante`)
-    REFERENCES `mydb`.`aplicante` (`idaplicante`)
+    REFERENCES `provas`.`aplicante` (`idaplicante`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -55,12 +55,12 @@ CREATE TABLE IF NOT EXISTS `provas`.`prova_has_perguntas` (
   INDEX `fk_prova_has_perguntas_prova_idx` (`prova_idprova` ASC) VISIBLE,
   CONSTRAINT `fk_prova_has_perguntas_prova`
     FOREIGN KEY (`prova_idprova`)
-    REFERENCES `mydb`.`prova` (`idprova`)
+    REFERENCES `provas`.`prova` (`idprova`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_prova_has_perguntas_perguntas1`
     FOREIGN KEY (`perguntas_idperguntas`)
-    REFERENCES `mydb`.`perguntas` (`idperguntas`)
+    REFERENCES `provas`.`perguntas` (`idperguntas`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
