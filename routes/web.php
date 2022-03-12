@@ -19,6 +19,6 @@ Route::get('/', function () {
 
 Route::post('/prova', 'App\Http\Controllers\GerarProvaController@gerarProva');
 
-Route::get('/teste', function() {
-    return view('prova');
+Route::get('/perguntas', function() {
+    return view('perguntas');
 });

@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Gerador de Provas</a>
+                    <a class="nav-link" href="/">Gerador de Provas</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/perguntas">Perguntas</a>
@@ -30,7 +30,7 @@
     </nav>
 
 
-    <h3 class="text-center">Gerador de Provas</h3>
+    <h3 class="text-center">Perguntas</h3>
 
     <div class="row">
         <div class="col-3"></div>
@@ -40,8 +40,12 @@
                 <form method="post" action="/prova">
                 @csrf
                     <div class="form-group">
-                        <label for="exampleInputNome">Nome da prova</label>
-                        <input type="text" required maxlength="80" class="form-control" name="nome" id="exampleInputNome" placeholder="Nome da Prova">
+                        <label for="exampleInputNome">Titulo da Pergunta</label>
+                        <input type="text" required maxlength="200" class="form-control" name="nome" id="exampleInputNome" placeholder="Titulo da Pergunta">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputNome">Rotulo</label>
+                        <input type="text" required maxlength="80" class="form-control" name="rotulo" id="exampleInputNome" placeholder="Rotulo">
                     </div>
                     <br />
                     Nivel da Prova:
@@ -59,13 +63,18 @@
                         <label class="form-check-label" for="dificil">Difícil</label>
                     </div>
                     <br />
+                    Resposta correta
                     <br />
-                    <div class="form-group">
-                        <label for="exampleInputQntQuestoes">Qtde de Questões</label>
-                        <input type="number" name="qntQuestoes" min="1" max="10" required class="form-control" id="exampleInputQntQuestoes" value="10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="iscorreta" id="facil" value="facil" checked>
+                        <label class="form-check-label" for="facil">Fácil</label>
                     </div>
-                    <br />
-                    <button type="submit" class="btn btn-primary" >Gerar</button>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="nivel" id="facil" value="facil" checked>
+                        <label class="form-check-label" for="facil">Fácil</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" >Salvar</button>
                 </form>
             </div>
 
