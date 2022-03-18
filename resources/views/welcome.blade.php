@@ -40,22 +40,22 @@
                 <form method="post" action="/prova">
                 @csrf
                     <div class="form-group">
-                        <label for="exampleInputNome">Nome da prova</label>
-                        <input type="text" required maxlength="80" class="form-control" name="nome" id="exampleInputNome" placeholder="Nome da Prova">
+                        <label for="exampleInputNome">Nome do aplicante</label>
+                        <input type="text" required maxlength="80" class="form-control" name="nome" id="exampleInputNome" placeholder="Nome do aplicante">
                     </div>
                     <br />
                     Nivel da Prova:
                     <br />
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="nivel" id="facil" value="facil" checked>
+                        <input class="form-check-input" type="radio" name="nivel" id="facil" value="1" checked>
                         <label class="form-check-label" for="facil">Fácil</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="medio" value="medio">
+                        <input class="form-check-input" type="radio" name="nivel" id="medio" value="2">
                         <label class="form-check-label" for="medio">Médio</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="dificil" value="dificil">
+                        <input class="form-check-input" type="radio" name="nivel" id="dificil" value="3">
                         <label class="form-check-label" for="dificil">Difícil</label>
                     </div>
                     <br />

@@ -9,5 +9,9 @@ class Gerada extends Model
 {
     use HasFactory;
     protected $table = "prova_has_perguntas";
+    protected $attributes = [
+        'respostas_dadas' => "{}",
+        'acertos' => "{}",
+    ];
 
 }
