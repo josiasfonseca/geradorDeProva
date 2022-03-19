@@ -10,4 +10,5 @@ class Prova extends Model
     use HasFactory;
     protected $table = "prova";
     protected $primaryKey = "idprova";
+    public $timestamps = false;
 }

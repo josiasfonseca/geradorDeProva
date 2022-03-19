@@ -11,4 +11,5 @@ class Pergunta extends Model
 
     protected $table = "perguntas";
     protected $primaryKey = "idperguntas";
+    public $timestamps = false;
 }

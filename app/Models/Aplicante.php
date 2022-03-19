@@ -11,5 +11,5 @@ class Aplicante extends Model
 
     protected $table = "aplicante";
     protected $primaryKey = "idaplicante";
-
+    public $timestamps = false;
 }

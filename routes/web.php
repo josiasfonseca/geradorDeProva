@@ -22,3 +22,5 @@ Route::post('/prova', 'App\Http\Controllers\GerarProvaController@gerarProva');
 Route::get('/perguntas', function() {
     return view('perguntas');
 });
+
+Route::post('/perguntas', 'App\Http\Controllers\PerguntasController@store');
