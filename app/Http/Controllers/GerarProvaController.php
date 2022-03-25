@@ -23,12 +23,12 @@ class GerarProvaController extends Controller
         $model = new PeguntasRepository;
         $perguntas = $model->retornoLimitado($request->qntQuestoes,$request->nivel);
         return response()->json(["perguntas"=>$perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
-        }catch (Exception $e){
+        }catch (\Exception $e){
             return response()->json(["erro"=>$e]);
         }
     }
 
     public function validaProva(Request $request){
-        
+
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Pergunta;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
 
 class PerguntasController extends Controller
 {
@@ -18,7 +17,7 @@ class PerguntasController extends Controller
             $pergunta->tipo_pergunta = $request->tipoPergunta;
             $pergunta->save();
             return response()->json(["msg"=>"cadastrado com sucesso"];
-        }catch (Exception $e) {
+        }catch (\Exception $e) {
             return response()->json(["msg"=> $e ]);
         }
     }
