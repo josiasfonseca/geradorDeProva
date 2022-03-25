@@ -21,4 +21,6 @@ class PerguntasController extends Controller
             return response()->json(["msg"=> $e ]);
         }
     }
+
+
 }

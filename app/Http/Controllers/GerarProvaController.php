@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Observer\CorretorObserver;
 use App\Http\Observer\LoggerObserver;
 use App\Models\Aplicante;
+use App\Models\Gerada;
 use App\Models\Pergunta;
 use App\Models\Prova;
 use Illuminate\Http\Request;
@@ -54,5 +55,12 @@ class GerarProvaController extends Controller
             return response()->json(["erro"=>$e]);
         }
 
+    }
+
+    public function salvaRespostaEspecifica(Request $request){
+
+        $gerada = Gerada::where('perguntas_idperguntas ',$request->idpergunta)->where('prova_idprova ',$request->idprova);
+        $gerada->acertou = $request->acertou;
+        $gerada->save();
     }
 }
