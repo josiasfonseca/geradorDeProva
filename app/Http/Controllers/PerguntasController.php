@@ -9,6 +9,7 @@ class PerguntasController extends Controller
 {
     public function store(Request $request) {
         try {
+            dd($request->all());
             $pergunta = new Pergunta();
             $pergunta->pergunta = $request->pergunta;
             $pergunta->dificuldade = $request->nivel;
