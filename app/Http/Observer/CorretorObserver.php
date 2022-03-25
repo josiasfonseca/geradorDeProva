@@ -2,6 +2,8 @@
 
 namespace App\Http\Observer;
 
+use App\Http\Strategies\Resolve;
+use App\Models\Gerada;
 use App\Models\Pergunta;
 
 class CorretorObserver implements CorrigeObserver
@@ -14,7 +16,15 @@ class CorretorObserver implements CorrigeObserver
             $logger = new LoggerObserver();
             $logger->corrige($idPergunta, $idProva);
         }else{
-            
+            $gerada = Gerada::where('perguntas_idperguntas ',$idPergunta)->where('prova_idprova ',$idProva);
+            $resolve = new Resolve($gerada->respostas_dadas,$pergunta->respostas);
+            if($resolve->validate()){
+                $gerada->acertou = true;
+            }else{
+                $gerada->acertou = false;
+            }
+            $gerada->save();
+
         }
     }
 }
