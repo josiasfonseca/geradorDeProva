@@ -24,3 +24,4 @@ Route::get('/perguntas', function() {
 });
 
 Route::post('/perguntas', 'App\Http\Controllers\PerguntasController@store');
+Route::post('/respostas', 'App\Http\Controllers\GeraProvaController@salvaProva');

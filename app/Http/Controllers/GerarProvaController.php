@@ -30,9 +30,7 @@ class GerarProvaController extends Controller
         }
     }
 
-    public function validaProva(Request $request){
 
-    }
     public function salvaProva(Request $request){
         try {
 
