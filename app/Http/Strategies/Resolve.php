@@ -9,11 +9,18 @@ class Resolve implements ValidationInterface
     {
         $this->value = $value;
         $this->name = $name;
-        // TODO: Implement __contruct() method.
+
     }
 
     public function validate(): string
     {
-        // TODO: Implement validate() method.
+        $resposta = $this->value->respostaDada;
+        $pergunta = $this->value->pergunta;
+        if ($resposta == $pergunta){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 }
