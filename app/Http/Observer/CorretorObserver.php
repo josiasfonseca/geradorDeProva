@@ -2,11 +2,19 @@
 
 namespace App\Http\Observer;
 
+use App\Models\Pergunta;
+
 class CorretorObserver implements CorrigeObserver
 {
 
     function corrige(string $idPergunta, string $idProva)
     {
-        // TODO: Implement corrige() method.
+        $pergunta = Pergunta::where('idperguntas',$idPergunta);
+        if ($pergunta->tipo_pergunta == 3){
+            $logger = new LoggerObserver();
+            $logger->corrige($idPergunta, $idProva);
+        }else{
+            
+        }
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Observer\CorretorObserver;
+use App\Http\Observer\LoggerObserver;
 use App\Models\Aplicante;
 use App\Models\Pergunta;
 use App\Models\Prova;
@@ -44,6 +46,8 @@ class GerarProvaController extends Controller
                         $gerada->perguntas_idperguntas = $pergunta->idperguntas;
                         $gerada->respostas_dadas = $resposta->respostas;
                         $gerada->save();
+                        $corretor = new CorretorObserver();
+                        $corretor->corrige($pergunta->idperguntas,$request->prova);
                     }
                 }
             }
