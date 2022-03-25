@@ -14,6 +14,7 @@ class CorretorObserver implements CorrigeObserver
         $pergunta = Pergunta::where('idperguntas',$idPergunta);
         if ($pergunta->tipo_pergunta == 3){
             $logger = new LoggerObserver();
+            $logger->attach();
             $logger->corrige($idPergunta, $idProva);
         }else{
             $gerada = Gerada::where('perguntas_idperguntas ',$idPergunta)->where('prova_idprova ',$idProva);
