@@ -47,7 +47,7 @@
                                 <h5 class="card-title">{{ $pg->pergunta }}</h5>
                                 @foreach (json_decode($pg->respostas) as $resp)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" required name={{  'questao' . $key }}
+                                        <input class="form-check-input" type="radio" required name={{  $pg->idperguntas }}
                                             id="questao1" value={{ $resp->name }}>
                                         <label class="form-check-label" for="questao1">
                                             {{  $resp->name }}
@@ -57,7 +57,8 @@
                             </div>
                         </div>
                     @endforeach
-                    <input type="hidden" id="" name={{ $prova->idprova }} value="" >
+                    <input type="hidden" id="id_prova" name="id_prova" value={{ $prova->idprova }} >
+                    <input type="hidden" id="id_aplicante" name="id_aplicante" value={{ $prova->idaplicante }} >
                     <button type="submit" href="#" class="btn btn-primary">Enviar</button>
                 </form>
 

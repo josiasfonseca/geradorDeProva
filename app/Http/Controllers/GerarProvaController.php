@@ -10,7 +10,6 @@ use App\Models\Pergunta;
 use App\Models\Prova;
 use Illuminate\Http\Request;
 use App\Http\Repositories\PeguntasRepository;
-use App\Models\Gerada;
 
 class GerarProvaController extends Controller
 {
@@ -43,7 +42,7 @@ class GerarProvaController extends Controller
 
     public function salvaProva(Request $request){
         try {
-
+            dd($request->all());
             $perguntas = json_decode($request->perguntas);
             $respostas = json_encode($request->respostas);
             foreach ($perguntas as $pergunta){
