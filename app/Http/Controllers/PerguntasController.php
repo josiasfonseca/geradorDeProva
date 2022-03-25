@@ -16,7 +16,7 @@ class PerguntasController extends Controller
             $pergunta->rotulo = $request->rotulo;
             $pergunta->tipo_pergunta = $request->tipoPergunta;
             $pergunta->save();
-            return response()->json(["msg"=>"cadastrado com sucesso"];
+            return response()->json(["msg"=>"cadastrado com sucesso"]);
         }catch (\Exception $e) {
             return response()->json(["msg"=> $e ]);
         }

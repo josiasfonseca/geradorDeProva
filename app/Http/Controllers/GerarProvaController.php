@@ -32,20 +32,25 @@ class GerarProvaController extends Controller
 
     }
     public function salvaProva(Request $request){
-        $perguntas = json_decode($request->perguntas);
-        $respostas = json_encode($request->respostas);
-        foreach ($perguntas as $pergunta){
-            foreach ($respostas as $resposta){
-                if ($pergunta->idperguntas == $resposta->idresposta){
-                    $gerada = new Gerada();
-                    $gerada->prova_idprova = $request->prova;
-                    $gerada->perguntas_idperguntas = $pergunta->idperguntas;
-                    $gerada->respostas_dadas = $resposta->respostas;
-                    $gerada->save();
+        try {
+
+            $perguntas = json_decode($request->perguntas);
+            $respostas = json_encode($request->respostas);
+            foreach ($perguntas as $pergunta){
+                foreach ($respostas as $resposta){
+                    if ($pergunta->idperguntas == $resposta->idresposta){
+                        $gerada = new Gerada();
+                        $gerada->prova_idprova = $request->prova;
+                        $gerada->perguntas_idperguntas = $pergunta->idperguntas;
+                        $gerada->respostas_dadas = $resposta->respostas;
+                        $gerada->save();
+                    }
                 }
             }
+            return response()->json(["msg"=>"salvo com sucesso"]);
+        }catch (\Exception $e){
+            return response()->json(["erro"=>$e]);
         }
-
 
     }
 }
