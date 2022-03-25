@@ -9,6 +9,8 @@ use App\Models\Pergunta;
 use App\Models\Prova;
 use Illuminate\Http\Request;
 use App\Http\Repositories\PeguntasRepository;
+use App\Models\Gerada;
+
 class GerarProvaController extends Controller
 {
     public function gerarProva(Request $request) {
@@ -24,7 +26,14 @@ class GerarProvaController extends Controller
         $prova->save();
         $model = new PeguntasRepository;
         $perguntas = $model->retornoLimitado($request->qntQuestoes,$request->nivel);
-        return response()->json(["perguntas"=>$perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
+
+        // return response()->json(["perguntas"=>$perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
+        // foreach($perguntas as $value){
+        //     $res = json_decode($value['respostas']);
+        //     var_dump($res[0]->respostas);
+        //     exit;
+        // }
+        return view('prova', ["perguntas"=> $perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
         }catch (\Exception $e){
             return response()->json(["erro"=>$e]);
         }

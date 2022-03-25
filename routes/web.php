@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::post('/prova', 'App\Http\Controllers\GerarProvaController@gerarProva');
+Route::post('/salvarprova', 'App\Http\Controllers\GerarProvaController@salvaProva');
 
 Route::get('/perguntas', function() {
     return view('perguntas');
