@@ -14,7 +14,7 @@ class Resolve implements ValidationInterface
 
     public function validate(): boolean
     {
-        if ($this->$repostadada == $this->$respostacorreta){
+        if ($this->respostadada == $this->respostacorreta){
             return true;
         }else{
             return false;
