@@ -30,24 +30,24 @@
                 </ul>
             </div>
         </nav>
-        
-        
+
+
         <h3 class="text-center">Perguntas</h3>
-        
+
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                
+
                 <div class="ml-3 p-4">
                     <form method="post" action="/perguntas">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputNome">Titulo da Pergunta</label>
-                            <input type="text" required maxlength="200" class="form-control" name="nome" id="exampleInputNome" placeholder="Titulo da Pergunta">
+                            <label for="exampleInputNome">Pergunta</label>
+                            <input type="text" required maxlength="200" class="form-control" name="pergunta" id="pergunta" placeholder="pergunta">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputNome">Rotulo</label>
-                            <input type="text" required maxlength="80" class="form-control" name="rotulo" id="exampleInputNome" placeholder="Rotulo">
+                            <input type="text" required maxlength="80" class="form-control" name="pergunta" id="pergunta" placeholder="Rotulo">
                         </div>
                         <br />
                         Nivel da Pergunta:
@@ -69,9 +69,9 @@
                         <button class="btn btn-primary" @click.preventDefault="addElementoResposta">+</button>
                         <br />
                         <div id="respostas">
-                            
+
                         </div>
-                        
+
                         <button type="submit" class="btn btn-primary" >Salvar</button>
                     </form>
                 </div>

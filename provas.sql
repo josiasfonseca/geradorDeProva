@@ -16,10 +16,10 @@ ENGINE = InnoDB;
 -- Table `mydb`.`prova`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `provas`.`prova` (
-  `idprova` INT NOT NULL AUTO_INCREMENT, 
+  `idprova` INT NOT NULL AUTO_INCREMENT,
   `aplicante_idaplicante` INT NOT NULL,
   PRIMARY KEY (`idprova`),
-  INDEX `fk_prova_aplicante1_idx` (`aplicante_idaplicante` ASC) VISIBLE,
+  INDEX `fk_prova_aplicante1_idx` (`aplicante_idaplicante` ASC),
   CONSTRAINT `fk_prova_aplicante1`
     FOREIGN KEY (`aplicante_idaplicante`)
     REFERENCES `provas`.`aplicante` (`idaplicante`)
@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS `provas`.`prova_has_perguntas` (
   `respostas_dadas` JSON NOT NULL,
   `acertos` JSON NOT NULL,
   PRIMARY KEY (`prova_idprova`, `perguntas_idperguntas`),
-  INDEX `fk_prova_has_perguntas_perguntas1_idx` (`perguntas_idperguntas` ASC) VISIBLE,
-  INDEX `fk_prova_has_perguntas_prova_idx` (`prova_idprova` ASC) VISIBLE,
+  INDEX `fk_prova_has_perguntas_perguntas1_idx` (`perguntas_idperguntas` ASC) ,
+  INDEX `fk_prova_has_perguntas_prova_idx` (`prova_idprova` ASC) ,
   CONSTRAINT `fk_prova_has_perguntas_prova`
     FOREIGN KEY (`prova_idprova`)
     REFERENCES `provas`.`prova` (`idprova`)
