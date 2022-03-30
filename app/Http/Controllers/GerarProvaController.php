@@ -27,13 +27,7 @@ class GerarProvaController extends Controller
         $model = new PeguntasRepository;
         $perguntas = $model->retornoLimitado($request->qntQuestoes,$request->nivel);
 
-        return response()->json(["perguntas"=>$perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
-        foreach($perguntas as $value){
-            $res = json_decode($value['respostas']);
-            var_dump($res[0]->respostas);
-            exit;
-         }
-        //return view('prova', ["perguntas"=> $perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
+        return view('prova', ["perguntas"=> $perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
         }catch (\Exception $e){
             return response()->json(["erro"=>$e]);
         }
