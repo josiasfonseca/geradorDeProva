@@ -50,7 +50,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputNome">Rotulo</label>
-                            <input type="text" required maxlength="80" class="form-control" name="pergunta"
+                            <input type="text" required maxlength="80" class="form-control" name="rotulo"
                                 id="pergunta" placeholder="Rotulo">
                         </div>
                         <br />
@@ -129,7 +129,7 @@
                     check.setAttribute('class', 'form-check-input')
                     check.setAttribute('type', 'radio')
                     check.setAttribute('required', '')
-                    check.setAttribute('name', 'pergunta')
+                    check.setAttribute('name', 'correta')
                     check.setAttribute('value', this.id)
 
                     var label1 = document.createElement('label')
@@ -140,6 +140,7 @@
                     var input = document.createElement('input')
                     input.setAttribute('class', 'form-control')
                     input.setAttribute('type', 'text')
+                    input.setAttribute('name', 'pergunta'+this.id)
 
                     var br = document.createElement('br')
                     var labelRadio = document.createElement('label')
