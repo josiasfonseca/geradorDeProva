@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Gerada extends Model
 {
-    use HasFactory;
+    use HasCompositePrimaryKey;
     protected $table = "prova_has_perguntas";
     public $timestamps = false;
     public $incrementing = false;
-    protected $primaryKey = 'prova_idprova';
+    protected $primaryKey =  array('prova_idprova', 'perguntas_idperguntas');
 
 }

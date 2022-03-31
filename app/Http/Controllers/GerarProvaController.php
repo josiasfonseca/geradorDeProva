@@ -48,7 +48,9 @@ class GerarProvaController extends Controller
                 $corretor = new CorretorObserver();
                 $corretor->corrige($key,$request->id_prova);
             }
+
             //return response()->json(["msg"=>"salvo com sucesso"]);
+            return view('correcao',[$request->id_prova]);
 
 
     }

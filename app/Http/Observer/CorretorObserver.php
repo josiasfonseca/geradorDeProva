@@ -18,7 +18,7 @@ class CorretorObserver implements CorrigeObserver
             $mensageria->attach($logger);
             $mensageria->corrige($idPergunta, $idProva);
         }else{
-            $gerada = Gerada::where('perguntas_idperguntas',$idPergunta)->where('prova_idprova',$idProva)->first();
+            $gerada = Gerada::find(array('prova_idprova'=>$idProva,'perguntas_idperguntas'=>$idPergunta));
             $respostas = json_decode($pergunta->respostas);
             $respostacerta = 0;
             foreach ($respostas as $key => $resp){
@@ -27,6 +27,7 @@ class CorretorObserver implements CorrigeObserver
             }
 
             $resolve = new Resolve();
+
             $resolve->construtor($gerada->respostas_dada,$respostacerta);
             if($resolve->valida()){
                 $gerada->acertou = true;
@@ -37,22 +38,6 @@ class CorretorObserver implements CorrigeObserver
 
 
         }
-        /*
-        if ($pergunta->tipo_pergunta == 2){
-            $logger = new LoggerObserver();
-            $mensageria = new MensageriaObserver();
-            $mensageria->attach($logger);
-            $mensageria->corrige($idPergunta, $idProva);
-        }else{
 
-            $resolve = new Resolve($gerada->respostas_dada,$pergunta->respostas);
-            if($resolve->validate()){
-                $gerada->acertou = true;
-            }else{
-                $gerada->acertou = false;
-            }
-            $gerada->save();
-
-        }*/
     }
 }
