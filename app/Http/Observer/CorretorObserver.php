@@ -11,15 +11,40 @@ class CorretorObserver implements CorrigeObserver
 
     function corrige(string $idPergunta, string $idProva)
     {
-        $pergunta = Pergunta::where('idperguntas',$idPergunta);
-        if ($pergunta->tipo_pergunta == 3){
+       $pergunta = Pergunta::where('idperguntas',$idPergunta)->first();
+        if ($pergunta->tipo_pergunta == 2){
             $logger = new LoggerObserver();
             $mensageria = new MensageriaObserver();
             $mensageria->attach($logger);
             $mensageria->corrige($idPergunta, $idProva);
         }else{
-            $gerada = Gerada::where('perguntas_idperguntas ',$idPergunta)->where('prova_idprova ',$idProva);
-            $resolve = new Resolve($gerada->respostas_dadas,$pergunta->respostas);
+            $gerada = Gerada::where('perguntas_idperguntas',$idPergunta)->where('prova_idprova',$idProva)->first();
+            $respostas = json_decode($pergunta->respostas);
+            $respostacerta = 0;
+            foreach ($respostas as $key => $resp){
+                if($resp->value == true)
+                    $respostacerta = $key+1;
+            }
+
+            $resolve = new Resolve();
+            if($resolve->valida()){
+                $gerada->acertou = true;
+            }else{
+                $gerada->acertou = false;
+            }
+            $gerada->save();
+
+
+        }
+        /*
+        if ($pergunta->tipo_pergunta == 2){
+            $logger = new LoggerObserver();
+            $mensageria = new MensageriaObserver();
+            $mensageria->attach($logger);
+            $mensageria->corrige($idPergunta, $idProva);
+        }else{
+
+            $resolve = new Resolve($gerada->respostas_dada,$pergunta->respostas);
             if($resolve->validate()){
                 $gerada->acertou = true;
             }else{
@@ -27,6 +52,6 @@ class CorretorObserver implements CorrigeObserver
             }
             $gerada->save();
 
-        }
+        }*/
     }
 }

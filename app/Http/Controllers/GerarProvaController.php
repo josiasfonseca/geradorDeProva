@@ -35,7 +35,7 @@ class GerarProvaController extends Controller
 
 
     public function salvaProva(Request $request){
-        try {
+
             $perguntas = $request->all();
             unset($perguntas['_token']);
             unset($perguntas['id_prova']);
@@ -46,12 +46,10 @@ class GerarProvaController extends Controller
                 $gerada->respostas_dada = $pergunta;
                 $gerada->save();
                 $corretor = new CorretorObserver();
-                //$corretor->corrige($key,$request->id_prova);
+                $corretor->corrige($key,$request->id_prova);
             }
-            return response()->json(["msg"=>"salvo com sucesso"]);
-        }catch (\Exception $e){
-            return response()->json(["erro"=>$e]);
-        }
+            //return response()->json(["msg"=>"salvo com sucesso"]);
+
 
     }
 

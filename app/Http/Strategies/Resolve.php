@@ -9,15 +9,15 @@ class Resolve implements ValidationInterface
     public function __contruct(string $respostadada, string $respostacorreta)
     {
         $this->respostadada = $respostadada;
-        $this->respostacorreta =$respostacorreta;
+        $this->respostacorreta = $respostacorreta;
     }
 
-    public function validate(): boolean
+    public function valida(): bool
     {
+
         if ($this->respostadada == $this->respostacorreta){
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 }
