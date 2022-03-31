@@ -27,6 +27,7 @@ class CorretorObserver implements CorrigeObserver
             }
 
             $resolve = new Resolve();
+            $resolve->construtor($gerada->respostas_dada,$respostacerta);
             if($resolve->valida()){
                 $gerada->acertou = true;
             }else{
