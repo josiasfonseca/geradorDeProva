@@ -57,15 +57,15 @@
                         Nivel da Pergunta:
                         <br />
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="nivel" id="facil" value="facil" checked>
+                            <input class="form-check-input" type="radio" name="nivel" id="facil" value="1" checked>
                             <label class="form-check-label" for="facil">Fácil</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="nivel" id="medio" value="medio">
+                            <input class="form-check-input" type="radio" name="nivel" id="medio" value="2">
                             <label class="form-check-label" for="medio">Médio</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="nivel" id="dificil" value="dificil">
+                            <input class="form-check-input" type="radio" name="nivel" id="dificil" value="3">
                             <label class="form-check-label" for="dificil">Difícil</label>
                         </div>
                         <br />
@@ -137,8 +137,7 @@
                     check.setAttribute('class', 'form-check-input')
                     check.setAttribute('type', 'radio')
                     check.setAttribute('required', '')
-                    check.setAttribute('name', 'respostacorreta')
-                    check.setAttribute('id', 'resposta' + this.id)
+                    check.setAttribute('name', 'correta')
                     check.setAttribute('value', this.id)
 
                     var label1 = document.createElement('label')
@@ -149,9 +148,7 @@
                     var input = document.createElement('input')
                     input.setAttribute('class', 'form-control')
                     input.setAttribute('type', 'text')
-                    input.setAttribute('id', 'resposta' + this.id)
-                    input.setAttribute('name', 'resposta' + this.id)
-                    input.setAttribute('v-model', 'form.resposta' + this.id)
+                    input.setAttribute('name', 'pergunta'+this.id)
 
                     var br = document.createElement('br')
                     var labelRadio = document.createElement('label')

@@ -27,12 +27,6 @@ class GerarProvaController extends Controller
         $model = new PeguntasRepository;
         $perguntas = $model->retornoLimitado($request->qntQuestoes,$request->nivel);
 
-        // return response()->json(["perguntas"=>$perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
-        // foreach($perguntas as $value){
-        //     $res = json_decode($value['respostas']);
-        //     var_dump($res[0]->respostas);
-        //     exit;
-        // }
         return view('prova', ["perguntas"=> $perguntas,"aplicante"=>$aplicante,"prova"=>$prova]);
         }catch (\Exception $e){
             return response()->json(["erro"=>$e]);
@@ -41,27 +35,23 @@ class GerarProvaController extends Controller
 
 
     public function salvaProva(Request $request){
-        try {
-            dd($request->all());
-            $perguntas = json_decode($request->perguntas);
-            $respostas = json_encode($request->respostas);
-            foreach ($perguntas as $pergunta){
-                foreach ($respostas as $resposta){
-                    if ($pergunta->idperguntas == $resposta->idresposta){
-                        $gerada = new Gerada();
-                        $gerada->prova_idprova = $request->prova;
-                        $gerada->perguntas_idperguntas = $pergunta->idperguntas;
-                        $gerada->respostas_dadas = $resposta->respostas;
-                        $gerada->save();
-                        $corretor = new CorretorObserver();
-                        $corretor->corrige($pergunta->idperguntas,$request->prova);
-                    }
-                }
+
+            $perguntas = $request->all();
+            unset($perguntas['_token']);
+            unset($perguntas['id_prova']);
+            foreach ($perguntas as $key => $pergunta) {
+                $gerada = new Gerada();
+                $gerada->prova_idprova = $request->id_prova;
+                $gerada->perguntas_idperguntas = $key;
+                $gerada->respostas_dada = $pergunta;
+                $gerada->save();
+                $corretor = new CorretorObserver();
+                $corretor->corrige($key,$request->id_prova);
             }
-            return response()->json(["msg"=>"salvo com sucesso"]);
-        }catch (\Exception $e){
-            return response()->json(["erro"=>$e]);
-        }
+
+            //return response()->json(["msg"=>"salvo com sucesso"]);
+            return view('correcao',[$request->id_prova]);
+
 
     }
 
