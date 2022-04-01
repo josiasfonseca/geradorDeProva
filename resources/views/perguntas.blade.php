@@ -41,7 +41,7 @@
             <div class="col-6">
 
                 <div class="ml-3 p-4">
-                    <form method="post" action="/perguntas">
+                    <form method="post" action="#">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputNome">Pergunta</label>
@@ -50,8 +50,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputNome">Rotulo</label>
-                            <input type="text" required maxlength="80" class="form-control" name="pergunta"
-                                id="pergunta" placeholder="Rotulo">
+                            <input type="text" required maxlength="80" class="form-control" name="rotulo"
+                                id="rotulo" placeholder="Rotulo">
                         </div>
                         <br />
                         Nivel da Pergunta:
@@ -69,14 +69,15 @@
                             <label class="form-check-label" for="dificil">Difícil</label>
                         </div>
                         <br />
-                        Respostas
-                        <button class="btn btn-primary" @click="addElementoResposta">+</button>
+                        Respostas:&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-primary btn-rounded" @click="addElementoResposta">+</button>
+                        <br />
                         <br />
                         <div id="respostas">
 
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button class="btn btn-primary mt-2" @click="salvar">Salvar</button>
                     </form>
                 </div>
             </div>
@@ -99,8 +100,20 @@
             data: {
                 respostas: [],
                 id: 0,
+                form: {
+                    resposta: '',
+                    resposta1: '',
+                    resposta2: '',
+                    resposta3: '',
+                    resposta4: '',
+                    resposta5: ''
+                }
             },
             methods: {
+                salvar(e) {
+                    e.preventDefault();
+                    console.log(this.form)
+                },
                 addElementoResposta(e) {
                     e.preventDefault();
                     this.id++;
@@ -110,11 +123,6 @@
                         return
                     }
                     const ele = document.getElementById('respostas');
-                    //<div class="form-group">
-                    //<label for="exampleInputNome">Titulo da Pergunta</label>
-                    //<input type="text" required maxlength="200" class="form-control" name="nome" id="exampleInputNome" placeholder="Titulo da Pergunta">
-                    //</div>
-
 
                     var formGroup = document.createElement("div")
                     formGroup.setAttribute("class", "form-group")
@@ -122,14 +130,15 @@
                     var label = document.createElement('label')
                     label.setAttribute("for", "pergunta");
 
-                    var textLabel = document.createTextNode('Pergunta ' + this.id)
+                    var textLabel = document.createTextNode('Resposta ' + this.id)
                     label.appendChild(textLabel)
 
                     var check = document.createElement('input')
                     check.setAttribute('class', 'form-check-input')
                     check.setAttribute('type', 'radio')
                     check.setAttribute('required', '')
-                    check.setAttribute('name', 'pergunta')
+                    check.setAttribute('name', 'respostacorreta')
+                    check.setAttribute('id', 'resposta' + this.id)
                     check.setAttribute('value', this.id)
 
                     var label1 = document.createElement('label')
@@ -140,16 +149,19 @@
                     var input = document.createElement('input')
                     input.setAttribute('class', 'form-control')
                     input.setAttribute('type', 'text')
+                    input.setAttribute('id', 'resposta' + this.id)
+                    input.setAttribute('name', 'resposta' + this.id)
+                    input.setAttribute('v-model', 'form.resposta' + this.id)
 
                     var br = document.createElement('br')
                     var labelRadio = document.createElement('label')
-                    var textLabelRadio = document.createTextNode('Correta ')
-                    labelRadio.appendChild(textLabel)
+                    var textLabelRadio = document.createTextNode('Correta')
+                    labelRadio.appendChild(textLabelRadio)
 
                     formGroup.appendChild(label);
                     formGroup.appendChild(br);
-                    formGroup.appendChild(labelRadio);
                     formGroup.appendChild(check);
+                    formGroup.appendChild(labelRadio);
                     formGroup.appendChild(input);
                     ele.appendChild(formGroup)
 
