@@ -50,9 +50,8 @@ class GerarProvaController extends Controller
                 $corretor->corrige($key,$request->id_prova);
 
             }
-            $provaCorrigida = DB::select('SELECT provaperg.*,perg.* FROM prova_has_perguntas as provaperg,perguntas as perg where provaperg.prova_idprova=132 and provaperg.perguntas_idperguntas=perg.idperguntas');
+            $provaCorrigida = DB::select('SELECT provaperg.*,perg.* FROM prova_has_perguntas as provaperg,perguntas as perg where provaperg.prova_idprova=' . $request->id_prova . ' and provaperg.perguntas_idperguntas=perg.idperguntas');
             $provaCorrigida = json_encode($provaCorrigida);
-
             //return response()->json(["msg"=>"salvo com sucesso"]);
             return view('correcao',["idprova" =>$request->id_prova, "provacorrigida" =>  $provaCorrigida ]);
 

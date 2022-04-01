@@ -32,7 +32,6 @@
 
 
     <h3 class="text-center">Correção</h3>
-    {{ $provacorrigida }}
 
     <div class="row">
         <div class="col-3"></div>
