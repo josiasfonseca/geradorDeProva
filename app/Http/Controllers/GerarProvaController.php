@@ -10,6 +10,7 @@ use App\Models\Pergunta;
 use App\Models\Prova;
 use Illuminate\Http\Request;
 use App\Http\Repositories\PeguntasRepository;
+use Illuminate\Support\Facades\DB;
 
 class GerarProvaController extends Controller
 {
@@ -47,10 +48,13 @@ class GerarProvaController extends Controller
                 $gerada->save();
                 $corretor = new CorretorObserver();
                 $corretor->corrige($key,$request->id_prova);
+
             }
+            $provaCorrigida = DB::select('SELECT provaperg.*,perg.* FROM prova_has_perguntas as provaperg,perguntas as perg where provaperg.prova_idprova=132 and provaperg.perguntas_idperguntas=perg.idperguntas');
+            $provaCorrigida = json_encode($provaCorrigida);
 
             //return response()->json(["msg"=>"salvo com sucesso"]);
-            return view('correcao',[$request->id_prova]);
+            return view('correcao',["idprova" =>$request->id_prova, "provacorrigida" =>  $provaCorrigida ]);
 
 
     }
