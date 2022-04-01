@@ -45,7 +45,6 @@
                             <h5 class="card-title">{{ $pg->pergunta }}</h5>
                             @foreach (json_decode($pg->respostas) as $keys => $resp)
                                 <div class="form-check">
-                                    {{ $keys }} -- {{ $pg->respostas_dada }}
                                     <input class="form-check-input" type="radio" disabled
                                         {{ $keys == $pg->respostas_dada ? 'checked' : null }}
                                         name="{{ $pg->idperguntas }}" id="questao{{ $pg->idperguntas }}"

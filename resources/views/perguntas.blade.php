@@ -41,7 +41,7 @@
             <div class="col-6">
 
                 <div class="ml-3 p-4">
-                    <form method="post" action="#">
+                    <form method="post" action="/perguntas">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputNome">Pergunta</label>
@@ -77,7 +77,7 @@
 
                         </div>
 
-                        <button class="btn btn-primary mt-2" @click="salvar">Salvar</button>
+                        <button class="btn btn-primary mt-2" type="submit">Salvar</button>
                     </form>
                 </div>
             </div>
