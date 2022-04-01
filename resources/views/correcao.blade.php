@@ -46,7 +46,7 @@
                             @foreach (json_decode($pg->respostas) as $keys => $resp)
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" disabled
-                                        {{ $keys == $pg->respostas_dada ? 'checked' : null }}
+                                        {{ $keys+1 == $pg->respostas_dada ? 'checked' : null }}
                                         name="{{ $pg->idperguntas }}" id="questao{{ $pg->idperguntas }}"
                                         value={{ $keys + 1 }}>
                                     <label class="form-check-label" for="questao{{ $pg->idperguntas }}">
