@@ -55,7 +55,7 @@ class PerguntasController extends Controller
             $pergunta->rotulo = $request->rotulo;
             $pergunta->tipo_pergunta = $tipo;
             $pergunta->save();
-            return view('welcome');
+            return view('perguntas');
         }catch (\Exception $e) {
             return view('perguntas');
         }
